@@ -43,14 +43,12 @@ const searchPage = (title) => {
             return response.json();
         })
         .then((response) => {
-            $("#title").attr("href", response[3]);
+            $("#title").attr("href", response[3][0]);
         })
         .catch(function(error){console.log(error);});
 }   
 
 $("#searchField").change(()=> {
+    fetchRandom().then(randomTitle => searchPage(randomTitle))
     $("#modal").show("fast");
 })
-
-fetchRandom().then(randomTitle => searchPage(randomTitle))
-
