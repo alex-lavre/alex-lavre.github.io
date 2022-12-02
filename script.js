@@ -1,18 +1,7 @@
 let url = "https://en.wikipedia.org/w/api.php";
 
 const fetchRandom = () => {
-    // let params = {
-    //     action: "query",
-    //     namespace: "Article",
-    //     format: "json",
-    //     list: "random",
-    //     rnlimit: "1"
-    // };
-    // url = url + "?origin=*";
-    // Object.keys(params).forEach(function(key){url += "&" + key + "=" + params[key];});
-
     url = 'https://en.wikipedia.org/w/api.php?origin=*&action=query&format=json&list=random&formatversion=2&rnnamespace=0&rnlimit=1'
-    // url = 'https://www.mediawiki.org/w/api.php?origin=*&action=query&format=json&list=random&formatversion=2&rnnamespace=0&rnlimit=1'
     return fetch(url)
         .then((response) => {
             return response.json();
@@ -26,7 +15,6 @@ const fetchRandom = () => {
         .catch(function(error){console.log(error);});
 };
 
-    
 
 const searchPage = (title) => {
     let params = {
@@ -47,6 +35,7 @@ const searchPage = (title) => {
         })
         .catch(function(error){console.log(error);});
 }   
+
 
 $("#searchField").change(()=> {
     fetchRandom().then(randomTitle => searchPage(randomTitle))
